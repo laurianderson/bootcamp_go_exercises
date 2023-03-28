@@ -22,8 +22,17 @@ func main() {
 		DNI:           "40.126.568",
 		AdmissionDate: "28/03/2023",
 	}
+
+	fmt.Println("Guardando un estudiante:")
+	student1.Save()
+
 	student1.Detail()
+
+	fmt.Println("Mostrando estudiantes guardados:")
+	fmt.Println(Students)
 } 
+
+var Students = []Student{{"Paul", "Sanchez", "38.567.980", "27/03/2023"}}
 
 type Student struct {
 	Name           string
@@ -32,6 +41,10 @@ type Student struct {
 	AdmissionDate  string
 }
 
-func (s *Student) Detail() {
-	fmt.Printf(" Los datos del estudiante son: \n Name: %s \n LastName: %s \n DNI: %s \n AdmissionDate: %s", s.Name, s.LastName, s.DNI, s.AdmissionDate)
+func (s Student) Save() {
+	Students = append(Students, s)
+}
+
+func (s Student) Detail() {
+	fmt.Printf(" Los datos del estudiante son: \n Name: %s \n LastName: %s \n DNI: %s \n AdmissionDate: %s ", s.Name, s.LastName, s.DNI, s.AdmissionDate)
 }
