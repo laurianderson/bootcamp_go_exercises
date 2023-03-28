@@ -44,6 +44,8 @@ func alimentoTarantula(cantidad int) int {
 	return cantidad * 150
 }
 
+
+//Pasando el animal y el alimento por parámetro calculamos la cantidad a ingerir
 func calcularAlimento(tipoAnimal string) (func(cantidadAlimento int) int, error) {
 	switch tipoAnimal {
 	case "perro":
