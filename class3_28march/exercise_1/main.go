@@ -13,12 +13,26 @@ package main
 
 import "fmt"
 
+
 func main() {
-	//Global product instantiation
-	Products := []Product {1, "Cake", 150.50, "carrot cake", "cake shop"}
+	product2 := Product {2, "lemon", 50.50, "lemon fruit", "fruit"}
+
+	fmt.Println("Guardando producto: ")
+	product2.Save()
+
+	fmt.Println("Listando producto: ")
+	product2.GetAll()
+
+	fmt.Println("Encontrando producto por id: ")
+	fmt.Println(getById(1))
+
 
 }
 
+//Global product instantiation
+var Products = []Product {{1, "cake", 150.50, "carrot cake", "cake shop"}}
+
+//Structure
 type Product struct {
 	ID          int
 	Name        string
@@ -29,19 +43,26 @@ type Product struct {
 
 
 //Methods
-func (p *Product) Save() {
-	p.save(Produdcts)
-
+func (p Product) Save() {
+	Products = append(Products, p)
 }
 
-func (p *Product) GetAll() {
-	fmt.Printf()
-
+func (p Product) GetAll() {
+	for _, p := range Products {
+		fmt.Println(p)	
+	}
 }
 
 //Function
-func getById(id int) producto {
-
+func getById(id int) Product {
+	for _, p := range Products {
+		if p.ID == id {
+			return p
+		}else {
+			fmt.Println("The product with id " , p.ID , " does not match the id entered")
+		}
+	}
+	return Product{}
 }
 
 
