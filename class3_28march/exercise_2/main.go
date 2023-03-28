@@ -12,16 +12,16 @@ Si logras realizar este pequeño programa pudiste ayudar a la empresa a solucion
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+) 
 
 func main() {
 	//Instantiation of the structure
-	person := Person{1, "Brad Pitt", "18/12/1963"}
+	person := Person{1, "Brad Pitt", "28/03/2023"}
 	employee := Employee{1, "director", person}
 
 	employee.PrintEmployee()
-
-
 }
 
 //Structure
@@ -39,8 +39,8 @@ type Employee struct {
 }
 
 //Method
-func (e *Employee) PrintEmployee() {
-
+func (e Employee) PrintEmployee() {
+	fmt.Println(" ID:", e.ID,  "\n Position: ", e.Position, "\n Person: ", e.Person)
 }
 
 
