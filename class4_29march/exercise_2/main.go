@@ -13,7 +13,7 @@ import (
 )
 
 
-var  validacion = fmt.Errorf("Error: %w", MyError{})
+var validacion = fmt.Errorf("Error: %w", MyError{})
 
 func main() {
 	salary := 10000

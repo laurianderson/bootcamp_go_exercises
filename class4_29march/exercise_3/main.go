@@ -12,16 +12,14 @@ import (
 	"errors"
 )
 
+var error1 = errors.New("Error: el salario es menor a 10.000")
+
 func main() {
-	salary := 9000
-
-	fmt.Println(salaryIs(salary))
-}
-
-func salaryIs (salary int) error {
+	salary := 10000
+	
 	if salary <= 10000 {
-		return errors.New("Error: el salario es menor a 10.000")
+		fmt.Print(error1)
 	} else {
-		return nil
+		fmt.Println("El salario es de: ", salary)
 	}
 }
