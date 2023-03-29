@@ -9,21 +9,23 @@ package main
 
 import (
 	"fmt"
+	"errors"
 )
 
+
+var  validacion = fmt.Errorf("Error: %w", MyError{})
+
 func main() {
-	salary := 9000
+	salary := 10000
+
+	if salary <= 10000 {
+		error := MyError{}
+		fmt.Println("La validadcion es: ", errors.Is(validacion, error))
+	}
 }
 
+type MyError struct {}
 
-type error interface {
-	Error() string
-}
-
-type MyError struct {
-	Message  string
-}
-
-func (e *MyError) Error() string {
+func (e MyError) Error() string {
 	return "Error: el salario es menor a 10.000"
 }
