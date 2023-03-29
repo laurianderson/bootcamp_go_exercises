@@ -11,15 +11,13 @@ import "fmt"
 
 func main() {
 	salary := 9000
+	var error1 = fmt.Errorf("Error: el mínimo imponible es de 150.000 y el salario ingresado es de: %d", salary)
 
-}
-
-err := fmt.Errorf("Error: el mínimo imponible es de 150.000 y el %s ingresado es de: ", salary)
-
-func salaryIs (salary int , err string) {
 	if salary <= 10000 {
-		return err
-	} else {
-		return 0
+		fmt.Println(error1)
 	}
 }
+
+
+
+
