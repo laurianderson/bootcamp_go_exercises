@@ -1,0 +1,32 @@
+Indice:
+............................................class1_20march..............................................................
+
+CONTROL STRUCTURE
+- exercise_3   -----> if
+- exercise_4   -----> for
+- exercise_5/6 -----> map
+
+............................................class2_27march..............................................................
+
+UNIT TEST
+- exercise_1/2/3
+
+............................................class3_28march..............................................................
+
+STRUC and METHODS
+- exercise_1/2/3
+
+INTERFACE IMPLEMENTS and IOTA(similar enum)
+- exercise_4
+
+............................................class4_29march..............................................................
+
+ERROR
+- exercise_1  -----> Error()
+- exercise_2 -----> errors.Is()
+- exercise_3 -----> errors.New()
+- exercise_4 -----> fmt.Errorf()
+- exercise_5 -----> función con retorno de error
+
+PANIC(DEFER, RECOVER)
+- exercise_6/8
