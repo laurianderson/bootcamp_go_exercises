@@ -20,9 +20,16 @@ import (
 func main() {
 	data := readFile("not-exist.txt")
 	fmt.Println(data)
+	fmt.Println("Ejecución finalizada")
 }
 
 func readFile(fileName string) string{
+	defer func(){
+		errPanic := recover()
+		if errPanic!= nil {
+            fmt.Println(errPanic)
+        }
+	}()
 	f1, err := os.Open(fileName)
 	if err != nil {
 		panic("el archivo indicado no fue encontrado o está dañado " + err.Error())
@@ -33,7 +40,5 @@ func readFile(fileName string) string{
 		panic(err)
 	}
 	
-	defer f1.Close()
-
 	return string(text)
 }
