@@ -24,12 +24,15 @@ func main() {
 }
 
 func readFile(fileName string) string{
+	//defer and recover guardan el error establecido en panic, para continuar con la ejecución del programa
 	defer func(){
 		errPanic := recover()
 		if errPanic!= nil {
             fmt.Println(errPanic)
         }
 	}()
+
+
 	f1, err := os.Open(fileName)
 	if err != nil {
 		panic("el archivo indicado no fue encontrado o está dañado " + err.Error())
