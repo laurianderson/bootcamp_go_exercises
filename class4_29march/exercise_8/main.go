@@ -42,7 +42,7 @@ func main() {
         Domicilio: "Calle1",
     }
     cliente2 := Cliente {
-        Legajo: 0,
+        Legajo: 3,
         Nombre: "",
         DNI: "12345677",
         NumeroTelefono: "45678",
@@ -56,12 +56,16 @@ func main() {
         Domicilio: "Calle2",
     }
 
+    //Imprimiendo slide clientes previo a  registrarlos
+    fmt.Println("Visualizando base, previo a la registración de clientes: ", Clientes)
+
+
     //Registrando los clientes
     registrar(cliente1)
     registrar(cliente2)
     registrar(cliente3)
 
-    //Imprimiendo slide clientes y comparando lo que tengo dentro
+    //Imprimiendo slide clientes post registrarlos
     fmt.Println(Clientes)
 
     fmt.Println("Fin de ejecución")
@@ -86,28 +90,29 @@ type Cliente struct {
 }
 
 
-//Falta como manejar los panic y los retornos
 func validarExistencia(clienteIngresado Cliente) (bool, error) {
+    //Guardo el error del panic, para poder seguir con la ejecución del programa una vez que entra ahí
     defer func(){
         err := recover()
         if err!= nil {
-            fmt.Println(err, clienteIngresado.Legajo)
+            fmt.Println(err)
         }
     }()
     
-    //Modificar acá no me evalua el true, por ende me imprime la condición que no debería
+    //Recorro el slice y hago la comparación si son iguales primero arrojo true para que el valor cambie y luego por fuera arrojo el panic
     for _, cliente := range Clientes {
         if clienteIngresado.Legajo ==  cliente.Legajo {
-            panic("Error: el cliente ya existe")
+            return true, nil
         }
+        panic("Error: el cliente con nombre: "  + cliente.Nombre + " y DNI: " + cliente.DNI + " ya existe")
     }
     return false, nil
 }
 
 func validarDatos(cliente Cliente) (int, error) {
-    fmt.Print("validando datos del cliente: " , cliente.Legajo)
+    fmt.Println("validando datos del cliente: " , cliente.Nombre)
     if cliente.Legajo == 0 || cliente.Nombre == "" || cliente.DNI == "" || cliente.NumeroTelefono == "" ||   cliente.Domicilio == "" {  
-       return 0, errors.New("Error de validacion de datos")
+       return 0, errors.New("Error")
     } else {
         return 0, nil
     }
@@ -118,7 +123,7 @@ func registrar(cliente Cliente) {
     if !existencia {
         _, err := validarDatos(cliente)
     if err != nil {
-        fmt.Println("hubo un error:" + err.Error())
+        fmt.Println("hubo un error en la registración del cliente: " , cliente.Nombre)
    } else {
         Clientes = append(Clientes, cliente) 
         }
