@@ -1,5 +1,5 @@
 /*
-Vamos a hacer que nuestro programa sea un poco más complejo y útil. 
+Vamos a hacer que nuestro programa sea un poco más complejo y útil.
 Desarrollá las funciones necesarias para permitir a la empresa calcular:
 Salario mensual de un trabajador según la cantidad de horas trabajadas.
 La función recibirá las horas trabajadas en el mes y el valor de la hora como argumento.
@@ -12,9 +12,34 @@ El mismo tendrá que indicar “Error: el trabajador no puede haber trabajado me
 package main
 
 import (
+	"errors"
 	"fmt"
 )
 
 func main() {
-	
+	persona1,err := calcularSalario(90, 2270)
+	if err!= nil {
+        fmt.Println(err)
+    } else{
+		fmt.Println(persona1)
+	}
+
 }
+
+func calcularSalario(horasTrabajadas , valorHora float64) (float64, error) {
+	if horasTrabajadas < 80.0 {
+        return 0, errors.New("Error: el trabajador no puede haber trabajado menos de 80 hs mensuales")
+	
+    }
+	if valorHora * horasTrabajadas >= 150000 {
+        return valorHora * horasTrabajadas - (valorHora * horasTrabajadas * 0.10), nil
+    } else {
+		return valorHora * horasTrabajadas, nil
+	}
+}
+
+    
+	
+	
+	
+	
