@@ -113,4 +113,13 @@ func GetMornings(time string) (int, error) {
 }
 
 // ejemplo 3
-//func AverageDestination(destination string, total int) (int error) {}
+func AverageDestination(destination string, total int) (int, error) {
+	totalCountryTickets, err := GetTotalTickets(destination)
+	if err != nil {
+		return 0, err
+	}
+	if total <= 0 {
+		return 0, errors.New("Canot dive by 0")
+	}
+	return totalCountryTickets / total, nil
+}

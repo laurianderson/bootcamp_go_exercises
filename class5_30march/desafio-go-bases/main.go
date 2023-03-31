@@ -16,6 +16,7 @@ func main() {
 	totalTickets,_ = tickets.GetMornings("mañana")
 	fmt.Println(totalTickets)
 
-
-
+	//ejercicio3
+	totalTickets,_ = tickets.AverageDestination("Brazil", 5)
+    fmt.Println(totalTickets)
 }
