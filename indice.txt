@@ -30,3 +30,9 @@ ERROR
 
 PANIC(DEFER, RECOVER)
 - exercise_6/8
+
+
+............................................class5_30march..............................................................
+
+END OF MODULE GO BASES (Read files, functions, tests)
+- desafio-go-bases
