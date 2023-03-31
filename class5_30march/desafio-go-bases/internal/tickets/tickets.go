@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"strings"
 	"strconv"
+	"errors"
 )
 
 type Ticket struct {
@@ -61,10 +62,21 @@ func ReadDataFile(path string) ([]Ticket, error) {
 
 
 // ejemplo 1
-func GetTotalTickets(destination string) (int error) {}
+func GetTotalTickets(destination string) (int, error) {
+	var countTicket = 0
+	if len(Tickets) <= 0 {
+		return 0, errors.New("Not found data")
+	}
+	for _, ticket := range Tickets {
+        if ticket.Country == destination {
+			countTicket++ 
+        } 
+    }
+	return countTicket, nil
+}
 
 // ejemplo 2
-func GetMornings(time string) (int error) {}
+//func GetMornings(time string) (int error) {}
 
 // ejemplo 3
-func AverageDestination(destination string, total int) (int error) {}
+//func AverageDestination(destination string, total int) (int error) {}
