@@ -13,6 +13,9 @@ func main() {
 	fmt.Println(totalTickets)
 
 	//ejercicio2
+	totalTickets,_ = tickets.GetMornings("mañana")
+	fmt.Println(totalTickets)
+
 
 
 }

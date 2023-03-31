@@ -75,8 +75,42 @@ func GetTotalTickets(destination string) (int, error) {
 	return countTicket, nil
 }
 
-// ejemplo 2
-//func GetMornings(time string) (int error) {}
+//ejemplo 2
+func GetMornings(time string) (int, error) {
+	total := 0
+	switch time {
+	case "madrugada":
+		for _,ticket := range Tickets {
+			if ticket.Date >= "0" && ticket.Date <= "6" {
+				total++
+			}
+		}
+		return total, nil
+	case "mañana":
+		for _, ticket := range Tickets {
+			if ticket.Date >= "7" && ticket.Date <= "12" {
+				total++
+			}
+		}
+		return total, nil
+	case "tarde":
+		for _, ticket := range Tickets {
+			if ticket.Date >= "13" && ticket.Date <= "19" {
+				total++
+			}
+		}
+		return total, nil
+	case "noche":
+		for _, ticket := range Tickets {
+			if ticket.Date >= "20" && ticket.Date <= "23" {
+				total++
+			}
+		}
+		return total, nil
+	default:
+		return 0, errors.New("Not found time")
+	}
+}
 
 // ejemplo 3
 //func AverageDestination(destination string, total int) (int error) {}
